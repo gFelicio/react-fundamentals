@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            div.container {
+                display: flex;
+                flex-flow: column;
+                width: 100%;
+                font-size: 1.2rem;
+                color: #fff;
+            }
+            
+            p.textcenter {
+                max-width: 100%;
+                padding: 5px 5px;
+                text-align: center;
+                background-color: #532586;
+            }
+
+            p.textdir {
+                max-width: 100%;
+                padding: 5px 5px;
+                text-align: right;
+                background-color: #865742;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://unpkg.com/react@17.0.0/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
+        <script type="text/babel">
+            function Container (props) {
+                return <div className="container" {...props}></div>
+            }
+
+            function ParagCenter (props) {
+                return <p className="textcenter" {...props}></p>
+            }
+
+            function ParagDir (props) {
+                return <p className="textdir" {...props}></p>
+            }
+
+            // const ParagDir = props => <p className="textdir" {...props}></p>
+
+            const conteudo = (
+                <Container id="main">
+                    <ParagCenter> Olá, Módulo! </ParagCenter>
+                    <ParagDir> Cê tá bão? </ParagDir>
+                </Container>
+            )
+
+            ReactDOM.render(conteudo, document.getElementById('root'))
+        </script>
+    </body>
+</html>
