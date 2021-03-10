@@ -44,13 +44,29 @@
         )
     }
 
-    element = (
+    function Soma ({num, num2}) {
+        return (
+            <React.Fragment>
+                <p> O resultado da soma é </p>
+                <div> {num + num2} </div>
+            </React.Fragment>
+        
+        )
+    }
+
+    // Quando necessário passar alguma prop que não seja string
+    // passar entre chaves
+
+    let element = (
         <div className="container">
+            
+            <Soma num={100} num2={200}/>
             <Message subject="Conga-la-conga" greeting="Olar"/>
             {Message({subject: 'Gustavo', greeting: 'Fala aí'})}
         </div>
     )
 
+    
     // 💯 This is only the first step to making actual React components. The rest is in the extra credit!
     ReactDOM.render(element, document.getElementById('root'))
   </script>
