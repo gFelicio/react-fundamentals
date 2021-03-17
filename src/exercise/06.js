@@ -20,25 +20,60 @@ function UsernameForm({onSubmitUsername}) {
   // to do so, set the value of 'htmlFor' prop of the label to the id of input
     const usernameEl = React.useRef()
 
-    
-    
-    return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label>Username:</label>
-                <input ref={usernameEl} id="username" type="text" />
-            </div>
-            <button type="submit">Submit</button>
-        </form>
-    )
+    // Criar uma var de estado de React
+    // uma var de estado mantem informaçã  mesmo que o conteudo da página  seja atualizado
+    // para ler o conteudo da variavel de estado,  podemos acessá-la diretamente
+    // no entanto, para alterar seu conteudo usamos uma função set
 
+    // msg = variavel de estado
+    // setMsg = função que vai setar o estado na variavel
+    // a funcao receberá um parametro que é o estado inciial da var
+    // nesse caso, o erro tem a mensagem vazia
+    // const [msg, setMsg] = React.useState('')
+	const [username, setUsername] = React.useState('')
+		
     function handleSubmit (event) {
         event.preventDefault()
         // let username = document.getElementById('username').value
         // let username = document.querySelector('#username').value
         let username = usernameEl.current.value
-        onSubmitUsername(username)        
+        onSubmitUsername(username)
     }
+	
+	function handleChange (event) {
+		// capturando o valor do input username
+		const val = event.target.value
+		// o valor do input sera valido se o conteudo for
+		// identico ao proprio conteudo em minusculas
+		// const isValid = (val === val.toLowerCase())
+		// setMsg(isValid ? "" : 'O valor informado deve estar em letras minúsculas')
+
+		// pega o valor do input e já transforma em minúsculas
+		setUsername(val.toLowerCase())
+	}
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <div>
+                <label>
+					Username:
+				</label>
+				<input ref={usernameEl}
+					id="username"
+					type="text"
+					onChange={handleChange}
+					value={username}/>
+            </div>
+			{/* <div style={{color:'red'}}>
+				{msg}
+			</div> */}
+            <button type="submit">
+				Submit
+			</button>
+        </form>
+    )
+
+    
 }
 
 function App() {
